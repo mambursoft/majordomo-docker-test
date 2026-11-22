@@ -1,0 +1,48 @@
+services:
+  db:
+    image: mariadb:10.4
+    environment:
+      MYSQL_ROOT_PASSWORD: test
+      MYSQL_DATABASE: db_terminal
+    volumes:
+      - ./core/db_terminal.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    networks:
+      - dmz
+
+  web73:
+    build: .
+    volumes:
+      - ./core:/var/www/html
+      - ./config.php:/var/www/html/config.php:ro
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    networks:
+      - dmz
+
+  web82:
+    build:
+      context: .
+      dockerfile: Dockerfile82
+    volumes:
+      - ./core:/var/www/html
+      - ./config.php:/var/www/html/config.php:ro
+    ports:
+      - "8081:80"
+    depends_on:
+      - db
+    networks:
+      - dmz
+
+  cli73:
+    image: php:7.3-cli
+    volumes:
+      - ./core:/app
+    working_dir: /app
+    networks:
+      - dmz
+
+networks:
+  dmz:
+    internal: true
