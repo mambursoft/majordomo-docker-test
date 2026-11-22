@@ -38,4 +38,6 @@ CREATE TABLE IF NOT EXISTS `cached_cycles` (
 - `diagnostic.php` — 51767/51798 байт, внешних CDN-ссылок 0;
 - выход в интернет заблокирован (`DMZ egress: BLOCKED`);
 - `audit.php` без авторизации — HTTP 403;
-- окно праздника: 23.11 → 0, 25.12 → 1, 15.01 → 1, 16.01 → 0.
+- окно праздника: 23.11 → 0, 25.12 → 1, 15.01 → 1, 16.01 → 0;
+- `pChart/analog.php` с параметром `p=ThisComputer.testProp` отдаёт валидный PNG
+  на PHP 7.3 и 8.2 (HTTP 200, 1303 байта).
