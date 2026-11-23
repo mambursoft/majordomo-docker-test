@@ -6,7 +6,8 @@
 |---|---|---|---|
 | majordomo-access-control | auth_guard_test.php | OK | OK |
 | majordomo-access-control | auth_tokens_test.php | OK | OK |
-| majordomo-access-control | oauth_providers_test.php (5 провайдеров) | OK | OK |
+| majordomo-access-control | oauth_providers_test.php (6 провайдеров, включая Apple) | OK | OK |
+| majordomo-access-control | auth_2fa_voice_test.php (private IP, окно, лимит) | OK | OK |
 | majordomo-audit | php -l src/audit.php + audit_ai.php | OK | OK |
 | majordomo-audit | audit_ai_test.php (8 провайдеров, backup) | OK | OK |
 | majordomo-audit | HTTP GET /audit.php без авторизации | 403 | 403 |
